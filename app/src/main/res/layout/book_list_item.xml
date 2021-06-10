@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_margin="10sp"
+    android:layout_width="match_parent"
+    android:layout_height="220sp"
+    android:background="@color/bookContainerBackground"
+    android:weightSum="100"
+    android:layout_gravity="center"
+    android:gravity="center">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="5"/>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:orientation="horizontal"
+        android:layout_weight="65"
+        android:weightSum="100">
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="20"/>
+        <ImageView
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="60"
+            android:scaleType="fitXY"
+            android:src="@drawable/placeholder"
+            android:id="@+id/bookListItemImageResource"/>
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="20"/>
+    </LinearLayout>
+
+
+    <TextView
+        android:gravity="center_vertical"
+        android:layout_marginStart="2dp"
+        android:layout_marginEnd="2dp"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="18"
+        android:text="Sample Title teeet eeeeeeeeeeeeeeeeest"
+        android:textSize="13sp"
+        android:textColor="#000000"
+        android:layout_gravity="center"
+        android:textAlignment="center"
+        android:id="@+id/bookListItemTitleText"
+        android:ellipsize="end"
+        android:maxLines="2"
+        android:layout_marginLeft="1sp"
+        android:layout_marginRight="1sp"/>
+
+    <TextView
+        android:gravity="center_vertical"
+        android:layout_marginStart="2dp"
+        android:layout_marginEnd="2dp"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="12"
+        android:text="Sample subtitle text"
+        android:textSize="11sp"
+        android:textColor="#404040"
+        android:layout_gravity="center"
+        android:textAlignment="center"
+        android:id="@+id/bookListItemSubtitleText"
+        android:ellipsize="end"
+        android:maxLines="1"
+        android:layout_marginLeft="1sp"
+        android:layout_marginRight="1sp"/>
+
+</LinearLayout>

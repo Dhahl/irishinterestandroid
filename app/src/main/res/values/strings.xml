@@ -1,0 +1,24 @@
+<resources>
+    <string name="app_name">Irish Interest</string>
+    <string name="welcomeScreenText">Welcome</string>
+    <string name="sample_review">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Cursus in hac habitasse platea dictumst quisque sagittis. Bibendum neque egestas congue quisque egestas diam. Elementum nibh tellus molestie nunc non blandit massa enim. Amet risus nullam eget felis eget. Diam vel quam elementum pulvinar. Massa vitae tortor condimentum lacinia. Turpis in eu mi bibendum neque. Scelerisque varius morbi enim nunc. Aliquet risus feugiat in ante metus. Nunc sed augue lacus viverra. Molestie nunc non blandit massa enim nec dui nunc. Tempor nec feugiat nisl pretium fusce id.</string>
+    <string name="sampleDescription">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Cursus in hac habitasse platea dictumst quisque sagittis. Bibendum neque egestas congue quisque egestas diam. Elementum nibh tellus molestie nunc non blandit massa enim. Amet risus nullam eget felis eget. Diam vel quam elementum pulvinar. Massa vitae tortor condimentum lacinia. Turpis in eu mi bibendum neque. Scelerisque varius morbi enim nunc. Aliquet risus feugiat in ante metus. Nunc sed augue lacus viverra. Molestie nunc non blandit massa enim nec dui nunc. Tempor nec feugiat nisl pretium fusce id. Mauris a diam maecenas sed enim ut. Justo nec ultrices dui sapien. Cras sed felis eget velit. Magna fringilla urna porttitor rhoncus dolor purus non. Sit amet nisl purus in mollis nunc sed. Gravida neque convallis a cras semper auctor neque vitae.
+
+Magna sit amet purus gravida quis blandit turpis cursus in. Pellentesque id nibh tortor id. Enim neque volutpat ac tincidunt vitae semper quis lectus. Arcu dictum varius duis at consectetur lorem donec massa sapien. Metus dictum at tempor commodo ullamcorper a. Sit amet facilisis magna etiam tempor orci eu lobortis elementum. Aliquam malesuada bibendum arcu vitae elementum curabitur vitae nunc sed. Urna duis convallis convallis tellus id interdum velit. Lectus quam id leo in vitae turpis massa. Lacus luctus accumsan tortor posuere ac. A scelerisque purus semper eget duis at tellus at. Nunc faucibus a pellentesque sit amet porttitor eget. Ullamcorper velit sed ullamcorper morbi tincidunt ornare massa eget egestas. Facilisis gravida neque convallis a cras. Imperdiet massa tincidunt nunc pulvinar.</string>
+
+    <string name="welcome_to_irish_interest">This application provides you with information on all the latest books published in Ireland. The application aims to bring information about books from or about Ireland to the widest possible audience, both in Ireland and throughout the world.</string>
+    <string name="about_us_irish_interest">Irish Interest in based on one very simple idea: to bring the contents of any Irish bookshop to people everywhere, especially those outside Ireland who do not have the possibility of keeping abreast of new books published in Ireland. The Irish Interest web platform is purely a provider of information about new publications. The aim of the site is to have every publishing house in Ireland adding their latest titles as they become available. Hyperlinks to each title bring users of the site directly to the publisher.’s web area or to a sales site where books can be purchased.</string>
+
+    <!-- Navigation Drawer -->
+    <string name="drawer_open" translatable="false">Open nav drawer</string>
+    <string name="drawer_close" translatable="false">Close nav drawer</string>
+
+    <string name="saved_user" translatable="false">saved_user</string>
+    <string name="is_user_logged_in" translatable="false">is_user_logged_in</string>
+    <string name="register_description">Please complete and submit the form below. You will shortly receive an email with instructions on how to activate your account.</string>
+    <string name="register_title">Thank You for Registering with Irish Interest</string>
+
+    <!-- Settings -->
+    <string name="enable_auto_login_setting">auto_login_enable</string>
+
+</resources>
