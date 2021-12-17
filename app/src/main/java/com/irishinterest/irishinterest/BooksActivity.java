@@ -78,7 +78,7 @@ public class BooksActivity extends AppCompatActivity {
                 configureBooksRecyclerView(extras.getString("id"), Module.AUTHORS);
                 authorDescriptionContainer.setVisibility(View.VISIBLE);
                 authorDescription.setText(extras.getString("profile"));
-                Picasso.with(this).load("https://irishinterest.ie/upload/" + extras.getString("authorImage"))
+                Picasso.get().load("https://irishinterest.ie/upload/" + extras.getString("authorImage"))
                         .placeholder(R.drawable.noauthor)
                         .into(authorImage);
                 divider.setVisibility(View.VISIBLE);

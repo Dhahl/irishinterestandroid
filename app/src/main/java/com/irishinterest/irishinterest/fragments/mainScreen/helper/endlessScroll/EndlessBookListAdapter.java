@@ -29,7 +29,7 @@ public class EndlessBookListAdapter extends PagedListAdapter<Book, EndlessBookLi
     public EndlessBookListAdapter(Context context){
         super(DIFF_CALLBACK);
         this.context = context;
-        this.picasso = Picasso.with(context);
+        this.picasso = Picasso.get();
     }
 
     @NonNull

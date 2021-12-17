@@ -272,7 +272,7 @@ public class BookDetailsActivity extends AppCompatActivity {
                 startActivity(new Intent(Intent.ACTION_VIEW, uri));
             });
 
-            Picasso.with(this).load("https://irishinterest.ie/upload/" + extras.getString("bookImage"))
+            Picasso.get().load("https://irishinterest.ie/upload/" + extras.getString("bookImage"))
                     .placeholder(R.drawable.placeholder)
                     .into(bookcover);
         }
@@ -467,7 +467,7 @@ public class BookDetailsActivity extends AppCompatActivity {
 
         final Bundle extras = getIntent().getExtras();
         if (extras != null) {
-            Picasso.with(this).load("https://irishinterest.ie/upload/" + extras.getString("bookImage"))
+            Picasso.get().load("https://irishinterest.ie/upload/" + extras.getString("bookImage"))
                     .placeholder(R.drawable.placeholder)
                     .into(bookCoverImage);
         }
