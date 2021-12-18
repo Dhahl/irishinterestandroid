@@ -7,7 +7,7 @@ import com.irishinterest.irishinterest.network.api.irishInterest.observer.GuiMes
 import java.lang.UnsupportedOperationException
 import java.util.ArrayList
 
-abstract class Provider<T : Data?>(
+abstract class Provider<T : Data>(
     @JvmField protected var guiToModel: GuiToModel,
     @JvmField protected var notificationOnChange: NotificationOnChange<T>
 ) {
