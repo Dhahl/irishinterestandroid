@@ -4,7 +4,6 @@ import android.content.Context
 import android.content.Intent
 import android.net.ConnectivityManager
 import android.os.Bundle
-import android.view.LayoutInflater
 import android.view.MenuItem
 import android.view.View
 import android.view.ViewGroup
@@ -39,7 +38,7 @@ import com.irishinterest.irishinterest.network.api.irishInterest.observer.GuiObs
 import com.irishinterest.irishinterest.network.api.irishInterest.observer.Module
 import java.util.*
 
-class HomeActivity : AppCompatActivity(), Notification {
+class MainActivity : AppCompatActivity(), Notification {
     //Fragments
     private var categoryFragment: CategoryFragment? = null
     private var mainScreenFragment: MainScreenFragment? = null
@@ -93,7 +92,7 @@ class HomeActivity : AppCompatActivity(), Notification {
                 it.setHomeAsUpIndicator(R.drawable.ic_menu)
                 it.isHideOnContentScrollEnabled = false
             }
-            viewPager = findViewById(R.id.viewpager)
+            if let viewPager = findViewById(R.id.viewpager)
             setupViewPager(viewPager)
             val tabs: TabLayout = findViewById(R.id.tabs)
             tabs.setupWithViewPager(viewPager)
@@ -112,13 +111,13 @@ class HomeActivity : AppCompatActivity(), Notification {
             }
             Timer().schedule(object : TimerTask() {
                 override fun run() {
-                    (context as HomeActivity).runOnUiThread {
+                    (context as MainActivity).runOnUiThread {
                         val fadeOut = AlphaAnimation(1.0f, 0.0f)
                         loadingScreenLayout?.startAnimation(fadeOut)
                         fadeOut.duration = 4000
                         Timer().schedule(object : TimerTask() {
                             override fun run() {
-                                (context as HomeActivity).runOnUiThread {
+                                (context as MainActivity).runOnUiThread {
                                     loadingScreenLayout?.setVisibility(View.GONE)
                                     tabLayout?.setVisibility(View.VISIBLE)
                                     (context as AppCompatActivity).supportActionBar!!.show()
@@ -187,9 +186,9 @@ class HomeActivity : AppCompatActivity(), Notification {
         val sideMenu = findViewById<LinearLayout>(R.id.sideMenu)
         if (userLoggedIn) {
             sideMenu.findViewById<View>(R.id.joinTextView).setOnClickListener { v: View? ->
-                val intent = Intent(context, MyProfileActivity::class.java)
+                val intent = Intent(this, MyProfileActivity::class.java)
                 intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK
-                context!!.startActivity(intent)
+                startActivity(intent)
             }
             (sideMenu.findViewById<View>(R.id.joinTextView) as TextView).text = "My profile"
             sideMenu.findViewById<View>(R.id.signInTextView).setOnClickListener { v: View? ->
