@@ -34,23 +34,18 @@ import retrofit2.Response;
 import retrofit2.Retrofit;
 import retrofit2.converter.jackson.JacksonConverterFactory;
 
-import static com.irishinterest.irishinterest.network.api.irishInterest.observer.Module.AUTHORS;
 import static com.irishinterest.irishinterest.network.api.irishInterest.observer.Module.BOOK_DETAILED;
 import static com.irishinterest.irishinterest.network.api.irishInterest.observer.Module.CATEGORIES;
-import static com.irishinterest.irishinterest.network.api.irishInterest.observer.Module.MAIN_SCREEN;
-import static com.irishinterest.irishinterest.network.api.irishInterest.observer.Module.USER;
 
 public class IrishInterestAPI implements Observer {
 
     private static final String BASE_URL = ApiConstants.API_URL.getKey();
     private static Retrofit retrofit;
     private IrishInterestApiInterface apiInterface;
-    private GuiObserver guiObserver;
-    private Context context;
+    private final GuiObserver guiObserver;
 
     public IrishInterestAPI(GuiObserver guiObserver, Context context) {
         this.guiObserver = guiObserver;
-        this.context = context;
         initialize();
     }
 
@@ -76,39 +71,39 @@ public class IrishInterestAPI implements Observer {
                     }
                     case USER: {
                         //TODO: USER REQUESTS
-                        if(guiMessage.getAction().equals(Action.LOGIN)){
-                            //Login the user with the provided credentials
-                            Call call = apiInterface.loginUser((UserLoginRequest) guiMessage.getDataList().get(0));
-                            call.enqueue(loginUserCallback(USER));
-                        } else if(guiMessage.getAction().equals(Action.LOGOUT)){
-                            //Logout the user with the provided credentials
-                            Call call = apiInterface.logoutUser((String) guiMessage.getDataList().get(0));
-                            call.enqueue(logoutUserCallback(USER));
-                        } else if(guiMessage.getAction().equals(Action.REGISTER)){
-                            //Call call = apiInterface.registerUser((String) guiMessage.getDataList().get(0));
-                            //call.enqueue(registerUserCallback(USER));
-                        } else if(guiMessage.getAction().equals(Action.USER_DATA_REQUEST)){
-                            //TODO: this needs to be implemented on server
-                        } else if(guiMessage.getAction().equals(Action.USER_FAVOURITES)){
-                            //TODO: check server implementation
-                        } else if(guiMessage.getAction().equals(Action.POST_REVIEW)){
-                            //POST A REVIEW
-                            Call call = apiInterface.postReview((String) guiMessage.getDataList().get(0));
-                            call.enqueue(postReview(USER));
-                        } else if(guiMessage.getAction().equals(Action.GET_REVIEWS)){
-                            //GET A REVIEW
-                            //Call call = apiInterface.getReviews("user", "testApiKey", "testTkn", (String) guiMessage.getDataList().get(0));
-                            //call.enqueue(getReviews(USER));
+                        switch (guiMessage.getAction()) {
+                            case LOGIN: {
+                                //Login the user with the provided credentials
+                                Call call = apiInterface.loginUser((UserLoginRequest) guiMessage.getDataList().get(0));
+                                call.enqueue(loginUserCallback());
+                                break;
+                            }
+                            case LOGOUT: {
+                                //Logout the user with the provided credentials
+                                Call call = apiInterface.logoutUser((String) guiMessage.getDataList().get(0));
+                                call.enqueue(logoutUserCallback());
+                                break;
+                            }
+                            case POST_REVIEW: {
+                                //POST A REVIEW
+                                Call call = apiInterface.postReview((String) guiMessage.getDataList().get(0));
+                                call.enqueue(postReview());
+                                break;
+                            }
+                            default: {
+                                //TODO: this needs to be implemented on server
+                                break;
+                            }
                         }
                     }
                     case MAIN_SCREEN: {
                         if (guiMessage.getAction().equals(Action.INIT)) {
                             //We have to fetch latest books.
                             Call call = apiInterface.getBooks("books", "testApiKey", "testTkn", "getLatest", String.valueOf(0));
-                            call.enqueue(latestBooksCallback(MAIN_SCREEN, ScrollAction.SCROLL_DOWN));
+                            call.enqueue(latestBooksCallback(ScrollAction.SCROLL_DOWN));
                         } else if(guiMessage.getAction().equals(Action.ADD)){
                             Call call = apiInterface.getBooks("books", "testApiKey", "testTkn", "getLatest", String.valueOf(guiMessage.getDataList().get(0)));
-                            call.enqueue(latestBooksCallback(MAIN_SCREEN, guiMessage.getScrollAction()));
+                            call.enqueue(latestBooksCallback(guiMessage.getScrollAction()));
                         }
                         break;
                     }
@@ -116,7 +111,7 @@ public class IrishInterestAPI implements Observer {
                         if (guiMessage.getAction().equals(Action.INIT)) {
                             //We have to fetch latest books.
                             Call call = apiInterface.getAllCategories("categories", "testApiKey", "testTkn");
-                            call.enqueue(allCategoriesCallback(CATEGORIES));
+                            call.enqueue(allCategoriesCallback());
                         }
                     }
                     case BOOK_DETAILED: {
@@ -125,10 +120,10 @@ public class IrishInterestAPI implements Observer {
                         //We fetch all authors + offset
                         if(guiMessage.getAction().equals(Action.INIT)){
                             Call call = apiInterface.getAllAuthors("authors", "testApiKey", "testTkn", "getAll", String.valueOf(0));
-                            call.enqueue(allAuthorsCallback(AUTHORS));
+                            call.enqueue(allAuthorsCallback());
                         } else if(guiMessage.getAction().equals(Action.ADD)){
                             Call call = apiInterface.getAllAuthors("authors", "testApiKey", "testTkn", "getAll", String.valueOf(guiMessage.getDataList().get(0)));
-                            call.enqueue(allAuthorsCallback(AUTHORS));
+                            call.enqueue(allAuthorsCallback());
                         } else if(guiMessage.getAction().equals(Action.MODIFY)){
                             //TODO
                         }
@@ -150,13 +145,14 @@ public class IrishInterestAPI implements Observer {
      * CALLBACKS
      */
 
-    private Callback latestBooksCallback(final Module module, final ScrollAction scrollAction){
-        Callback callback = new Callback() {
+    private Callback latestBooksCallback(final ScrollAction scrollAction){
+
+        return new Callback() {
             @Override
             public void onResponse(Call call, Response response) {
                 ApiResponse<Book> apiResponse = (ApiResponse<Book>) response.body();
                 ArrayList<Book> books = (ArrayList<Book>) apiResponse.getResponse();
-                guiObserver.publishMessage(new GuiMessage(module, Action.INIT, InternalAction.RESPONSE, scrollAction, new BookValues(books)));
+                guiObserver.publishMessage(new GuiMessage(Module.MAIN_SCREEN, Action.INIT, InternalAction.RESPONSE, scrollAction, new BookValues(books)));
             }
 
             @Override
@@ -164,17 +160,16 @@ public class IrishInterestAPI implements Observer {
                 Log.d("RESPONSE", t.toString());
             }
         };
-
-        return callback;
     }
 
-    private Callback allCategoriesCallback(final Module module){
-        Callback callback = new Callback() {
+    private Callback allCategoriesCallback(){
+
+        return new Callback() {
             @Override
             public void onResponse(Call call, Response response) {
                 ApiResponse<Category> apiResponse = (ApiResponse<Category>) response.body();
                 ArrayList<Category> categories = (ArrayList<Category>) apiResponse.getResponse();
-                guiObserver.publishMessage(new GuiMessage(module, Action.INIT, InternalAction.RESPONSE, new CategoryValues(categories)));
+                guiObserver.publishMessage(new GuiMessage(Module.CATEGORIES, Action.INIT, InternalAction.RESPONSE, new CategoryValues(categories)));
             }
 
             @Override
@@ -182,17 +177,16 @@ public class IrishInterestAPI implements Observer {
 
             }
         };
-
-        return callback;
     }
 
-    private Callback allAuthorsCallback(final Module module){
-        Callback callback = new Callback() {
+    private Callback allAuthorsCallback(){
+
+        return new Callback() {
             @Override
             public void onResponse(Call call, Response response) {
                 ApiResponse<Author> apiResponse = (ApiResponse<Author>) response.body();
                 ArrayList<Author> authors = (ArrayList<Author>) apiResponse.getResponse();
-                guiObserver.publishMessage(new GuiMessage(module, Action.INIT, InternalAction.RESPONSE, new AuthorValues(authors)));
+                guiObserver.publishMessage(new GuiMessage(Module.AUTHORS, Action.INIT, InternalAction.RESPONSE, new AuthorValues(authors)));
             }
 
             @Override
@@ -200,17 +194,15 @@ public class IrishInterestAPI implements Observer {
 
             }
         };
-
-        return callback;
     }
 
-    private Callback loginUserCallback(final Module module){
-        Callback callback = new Callback() {
+    private Callback loginUserCallback(){
+        return new Callback() {
             @Override
             public void onResponse(Call call, Response response) {
                 ApiResponse<DefaultServerResponse> apiResponse = (ApiResponse<DefaultServerResponse>) response.body();
                 //TODO
-                guiObserver.publishMessage(new GuiMessage(module, Action.LOGIN, InternalAction.RESPONSE));
+                guiObserver.publishMessage(new GuiMessage(Module.USER, Action.LOGIN, InternalAction.RESPONSE));
             }
 
             @Override
@@ -218,16 +210,15 @@ public class IrishInterestAPI implements Observer {
 
             }
         };
-        return callback;
     }
 
-    private Callback logoutUserCallback(final Module module){
-        Callback callback = new Callback() {
+    private Callback logoutUserCallback(){
+        return new Callback() {
             @Override
             public void onResponse(Call call, Response response) {
                 ApiResponse<UserLogoutResponse> apiResponse = (ApiResponse<UserLogoutResponse>) response.body();
                 //TODO
-                guiObserver.publishMessage(new GuiMessage(module, Action.LOGOUT, InternalAction.RESPONSE));
+                guiObserver.publishMessage(new GuiMessage(Module.USER, Action.LOGOUT, InternalAction.RESPONSE));
             }
 
             @Override
@@ -235,11 +226,10 @@ public class IrishInterestAPI implements Observer {
 
             }
         };
-        return callback;
     }
 
     private Callback registerUserCallback(final Module module){
-        Callback callback = new Callback() {
+        return new Callback() {
             @Override
             public void onResponse(Call call, Response response) {
                 ApiResponse<UserRegistrationResponse> apiResponse = (ApiResponse<UserRegistrationResponse>) response.body();
@@ -252,11 +242,10 @@ public class IrishInterestAPI implements Observer {
 
             }
         };
-        return callback;
     }
 
-    private Callback postReview(final Module module){
-        Callback callback = new Callback() {
+    private Callback postReview(){
+        return new Callback() {
             @Override
             public void onResponse(Call call, Response response) {
               //TODO
@@ -268,11 +257,10 @@ public class IrishInterestAPI implements Observer {
 
             }
         };
-        return callback;
     }
 
     private Callback getReviews(final Module module){
-        Callback callback = new Callback() {
+        return new Callback() {
             @Override
             public void onResponse(Call call, Response response) {
                 //TODO
@@ -283,6 +271,5 @@ public class IrishInterestAPI implements Observer {
 
             }
         };
-        return callback;
     }
 }
