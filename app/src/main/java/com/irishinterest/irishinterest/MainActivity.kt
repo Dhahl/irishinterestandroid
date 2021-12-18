@@ -42,7 +42,7 @@ class MainActivity : AppCompatActivity(), Notification {
     //Fragments
     private var categoryFragment: CategoryFragment? = null
     private var mainScreenFragment: MainScreenFragment? = null
-    private var authorsFragment: AuthorsFragment? = null
+    private val authorsFragment = AuthorsFragment()
     private var searchFragment: SearchFragment? = null
 
     //Layouts
@@ -327,7 +327,6 @@ class MainActivity : AppCompatActivity(), Notification {
     }
 
     private fun createAuthorsScreenFragment() {
-        authorsFragment = AuthorsFragment()
         AuthorsProvider(guiObserver, authorsFragment)
     }
 
