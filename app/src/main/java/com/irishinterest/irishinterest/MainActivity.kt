@@ -40,10 +40,10 @@ import java.util.*
 
 class MainActivity : AppCompatActivity(), Notification {
     //Fragments
-    private var categoryFragment: CategoryFragment? = null
-    private var mainScreenFragment: MainScreenFragment? = null
+    private val categoryFragment = CategoryFragment()
+    private val mainScreenFragment = MainScreenFragment()
     private val authorsFragment = AuthorsFragment()
-    private var searchFragment: SearchFragment? = null
+    private val searchFragment = SearchFragment()
 
     //Layouts
     private var loadingScreenLayout: LinearLayout? = null
@@ -74,7 +74,7 @@ class MainActivity : AppCompatActivity(), Notification {
             //For custom toolbar
             val toolbar = findViewById<Toolbar>(R.id.toolbar)
             setSupportActionBar(toolbar)
-            createSearchScreenFragment()
+            
             createMainScreenFragment()
             createAuthorsScreenFragment()
             createCategoryScreenFragment()
@@ -322,7 +322,6 @@ class MainActivity : AppCompatActivity(), Notification {
     }
 
     private fun createMainScreenFragment() {
-        mainScreenFragment = MainScreenFragment()
         MainScreenProvider(guiObserver, mainScreenFragment)
     }
 
@@ -331,13 +330,8 @@ class MainActivity : AppCompatActivity(), Notification {
     }
 
     private fun createCategoryScreenFragment() {
-        categoryFragment = CategoryFragment()
         //Fragment Providers
         CategoryProvider(guiObserver, categoryFragment)
-    }
-
-    private fun createSearchScreenFragment() {
-        searchFragment = SearchFragment()
     }
 
     internal class ViewPagerAdapter(manager: FragmentManager?) : FragmentPagerAdapter(manager!!) {
