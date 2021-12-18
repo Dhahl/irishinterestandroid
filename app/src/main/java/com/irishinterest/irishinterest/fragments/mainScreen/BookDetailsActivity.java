@@ -194,7 +194,7 @@ public class BookDetailsActivity extends AppCompatActivity {
                 UserAddRemoveFavouriteBook request = new UserAddRemoveFavouriteBook();
                 request.setAction("addFavourite");
                 request.setApiKey("testApiKey");
-                request.setIsTest(true);
+                request.setTest(true);
                 request.setToken("testToken");
                 request.setEnc(enc);
 
@@ -399,7 +399,7 @@ public class BookDetailsActivity extends AppCompatActivity {
         UserAddRemoveFavouriteBook request = new UserAddRemoveFavouriteBook();
         request.setAction("addFavourite");
         request.setApiKey("testApiKey");
-        request.setIsTest(true);
+        request.setTest(true);
         request.setToken("testToken");
         request.setEnc(enc);
 
@@ -433,7 +433,7 @@ public class BookDetailsActivity extends AppCompatActivity {
         UserAddRemoveFavouriteBook request = new UserAddRemoveFavouriteBook();
         request.setAction("removeFavourite");
         request.setApiKey("testApiKey");
-        request.setIsTest(true);
+        request.setTest(true);
         request.setToken("testToken");
         request.setEnc(enc);
 

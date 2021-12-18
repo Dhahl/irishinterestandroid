@@ -157,7 +157,7 @@ public class BookDataSource extends PageKeyedDataSource<Integer, Book> {
             request.setAction("getFavourites");
             request.setApiKey("testApiKey");
             request.setToken("testToken");
-            request.setIsTest(true);
+            request.setTest(true);
             request.setEnc(enc);
             SingletonAPI.getInstance().getApiInterface()
                     .getFavouriteBooks(request)
@@ -314,7 +314,7 @@ public class BookDataSource extends PageKeyedDataSource<Integer, Book> {
             request.setAction("getFavourites");
             request.setApiKey("testApiKey");
             request.setToken("testToken");
-            request.setIsTest(true);
+            request.setTest(true);
             request.setEnc(enc);
 
             SingletonAPI.getInstance().getApiInterface()
@@ -476,7 +476,7 @@ public class BookDataSource extends PageKeyedDataSource<Integer, Book> {
             request.setAction("getFavourites");
             request.setApiKey("testApiKey");
             request.setToken("testToken");
-            request.setIsTest(true);
+            request.setTest(true);
             request.setEnc(enc);
 
             SingletonAPI.getInstance().getApiInterface()

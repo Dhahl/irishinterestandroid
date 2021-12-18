@@ -111,7 +111,7 @@ public class RegisterActivity extends AppCompatActivity {
                 UserRegisterMessage request = new UserRegisterMessage();
                 request.setAction("userRegister");
                 request.setApiKey("testApiKey");
-                request.setIsTest(true);
+                request.setTest(true);
                 request.setToken("testTkn");
                 request.setEnc(enc);
 

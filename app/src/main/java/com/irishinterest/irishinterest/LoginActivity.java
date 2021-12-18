@@ -88,7 +88,7 @@ public class LoginActivity extends AppCompatActivity {
                 loginRequest.setAction("userLogin");
                 loginRequest.setApiKey("testApiKey");
                 loginRequest.setToken("testTkn");
-                loginRequest.setIsTest(true);
+                loginRequest.setTest(true);
 
                 User user = new User();
                 user.setEmail(email);
