@@ -92,19 +92,23 @@ class MainActivity : AppCompatActivity(), Notification {
                 it.setHomeAsUpIndicator(R.drawable.ic_menu)
                 it.isHideOnContentScrollEnabled = false
             }
-            if let viewPager = findViewById(R.id.viewpager)
-            setupViewPager(viewPager)
+            viewPager = findViewById(R.id.viewpager)
+            viewPager?.let {
+                setupViewPager(it)
+            }
             val tabs: TabLayout = findViewById(R.id.tabs)
             tabs.setupWithViewPager(viewPager)
             tabs.bringToFront()
-            setupTabView(tabs)
+            tabs?.let {
+                setupTabView(it)
+            }
             supportActionBar!!.hide()
             setupSideMenu()
             tabLayout = tabs
             val user = UserController.getUser(applicationContext)
-            if (user != null) {
+            user?.let {
                 if (isAutoLoginEnabled) {
-                    Toast.makeText(this, "Welcome back " + user.realName, Toast.LENGTH_LONG).show()
+                    Toast.makeText(this, "Welcome back " + it.realName, Toast.LENGTH_LONG).show()
                 } else {
                     UserController.logout(this)
                 }
@@ -185,13 +189,13 @@ class MainActivity : AppCompatActivity(), Notification {
     private fun changeUserSection(userLoggedIn: Boolean) {
         val sideMenu = findViewById<LinearLayout>(R.id.sideMenu)
         if (userLoggedIn) {
-            sideMenu.findViewById<View>(R.id.joinTextView).setOnClickListener { v: View? ->
+            sideMenu.findViewById<View>(R.id.joinTextView).setOnClickListener { _ ->
                 val intent = Intent(this, MyProfileActivity::class.java)
                 intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK
                 startActivity(intent)
             }
             (sideMenu.findViewById<View>(R.id.joinTextView) as TextView).text = "My profile"
-            sideMenu.findViewById<View>(R.id.signInTextView).setOnClickListener { v: View? ->
+            sideMenu.findViewById<View>(R.id.signInTextView).setOnClickListener { _ ->
                 UserController.logout(applicationContext)
                 val intent = Intent(context, LoginActivity::class.java)
                 intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK
@@ -199,13 +203,13 @@ class MainActivity : AppCompatActivity(), Notification {
             }
             (sideMenu.findViewById<View>(R.id.signInTextView) as TextView).text = "Logout"
         } else {
-            sideMenu.findViewById<View>(R.id.joinTextView).setOnClickListener { v: View? ->
+            sideMenu.findViewById<View>(R.id.joinTextView).setOnClickListener { _ ->
                 val intent = Intent(context, RegisterActivity::class.java)
                 intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK
                 context!!.startActivity(intent)
             }
             (sideMenu.findViewById<View>(R.id.joinTextView) as TextView).text = "Join"
-            sideMenu.findViewById<View>(R.id.signInTextView).setOnClickListener { v: View? ->
+            sideMenu.findViewById<View>(R.id.signInTextView).setOnClickListener { _ ->
                 val intent = Intent(context, LoginActivity::class.java)
                 intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK
                 context!!.startActivity(intent)
@@ -229,56 +233,56 @@ class MainActivity : AppCompatActivity(), Notification {
         val sideMenu = findViewById<LinearLayout>(R.id.sideMenu)
 
         //Welcome
-        sideMenu.findViewById<View>(R.id.welcomeTextView).setOnClickListener { v: View? ->
+        sideMenu.findViewById<View>(R.id.welcomeTextView).setOnClickListener { _ ->
             val intent = Intent(context, WelcomeActivity::class.java)
             intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK
             context!!.startActivity(intent)
         }
 
         //Contact Us
-        sideMenu.findViewById<View>(R.id.contactUsTextView).setOnClickListener { v: View? ->
+        sideMenu.findViewById<View>(R.id.contactUsTextView).setOnClickListener { _ ->
             val intent = Intent(context, ContactUsActivity::class.java)
             intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK
             context!!.startActivity(intent)
         }
 
         //Join
-        sideMenu.findViewById<View>(R.id.joinTextView).setOnClickListener { v: View? ->
+        sideMenu.findViewById<View>(R.id.joinTextView).setOnClickListener { _ ->
             val intent = Intent(context, RegisterActivity::class.java)
             intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK
             context!!.startActivity(intent)
         }
 
         //Sign In
-        sideMenu.findViewById<View>(R.id.signInTextView).setOnClickListener { v: View? ->
+        sideMenu.findViewById<View>(R.id.signInTextView).setOnClickListener { _ ->
             val intent = Intent(context, LoginActivity::class.java)
             intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK
             context!!.startActivity(intent)
         }
 
         //Settings
-        sideMenu.findViewById<View>(R.id.settingsTextView).setOnClickListener { v: View? ->
+        sideMenu.findViewById<View>(R.id.settingsTextView).setOnClickListener { _ ->
             val intent = Intent(context, SettingsActivity::class.java)
             intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK
             context!!.startActivity(intent)
         }
 
         //Privacy policy
-        sideMenu.findViewById<View>(R.id.privacyPolicyTextView).setOnClickListener { v: View? ->
+        sideMenu.findViewById<View>(R.id.privacyPolicyTextView).setOnClickListener { _ ->
             val intent = Intent(context, PrivacyPolicyActivity::class.java)
             intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK
             context!!.startActivity(intent)
         }
 
         //Terms & Conditions
-        sideMenu.findViewById<View>(R.id.termsAndConditionsTextView).setOnClickListener { v: View? ->
+        sideMenu.findViewById<View>(R.id.termsAndConditionsTextView).setOnClickListener { _ ->
             val intent = Intent(context, TermsAndConditionsActivity::class.java)
             intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK
             context!!.startActivity(intent)
         }
     }
 
-    private fun setupTabView(tabLayout: TabLayout?) {
+    private fun setupTabView(tabLayout: TabLayout) {
         val names = ArrayList<String>()
         val icons = ArrayList<Int>()
         names.add("Search")
@@ -291,13 +295,13 @@ class MainActivity : AppCompatActivity(), Notification {
         icons.add(R.drawable.books_icon)
         names.add("More")
         icons.add(R.drawable.more_icon)
-        for (i in 0 until tabLayout!!.tabCount) {
+        for (i in 0 until tabLayout.tabCount) {
             val tab = layoutInflater.inflate(R.layout.navigation_tab, null, false)
             val tabName = tab.findViewById<TextView>(R.id.navText)
             val tabIcon = tab.findViewById<ImageView>(R.id.navIcon)
             tabName.text = names[i]
             tabIcon.setImageResource(icons[i])
-            tabLayout?.getTabAt(i)?.customView = tab
+            tabLayout.getTabAt(i)?.customView = tab
         }
     }
 
@@ -308,14 +312,14 @@ class MainActivity : AppCompatActivity(), Notification {
         fadeIn.duration = 2000
     }
 
-    private fun setupViewPager(viewPager: ViewPager?) {
+    private fun setupViewPager(viewPager: ViewPager) {
         val adapter = ViewPagerAdapter(supportFragmentManager)
         adapter.addFragment(searchFragment, "Search")
         adapter.addFragment(authorsFragment, "Authors")
         adapter.addFragment(categoryFragment, "Categories")
         adapter.addFragment(mainScreenFragment, "Latest books")
         adapter.addFragment(MoreScreenFragment(), "More")
-        viewPager!!.adapter = adapter
+        viewPager.adapter = adapter
     }
 
     private fun createMainScreenFragment() {
