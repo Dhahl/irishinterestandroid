@@ -8,6 +8,8 @@
       <map>
         <entry key="app/src/main/res/layout/activity_home.xml" value="0.12708333333333333" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.12395833333333334" />
+        <entry key="app/src/main/res/layout/author_list_item.xml" value="0.12454710144927536" />
+        <entry key="app/src/main/res/layout/search_fragment.xml" value="0.12454710144927536" />
       </map>
     </option>
   </component>
