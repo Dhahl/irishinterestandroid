@@ -52,7 +52,7 @@ class MainActivity : AppCompatActivity(), Notification {
     //Other
     private var tabLayout: TabLayout? = null
     private var viewPager: ViewPager? = null
-    private var guiObserver: GuiObserver? = null
+    private val guiObserver = GuiObserver()
     private var context: Context? = null
     private var drawerLayout: DrawerLayout? = null
 
@@ -61,7 +61,6 @@ class MainActivity : AppCompatActivity(), Notification {
         setContentView(R.layout.activity_main)
 
         //The application will use fragments. Will only use one activity for the foreseeable future.
-        guiObserver = GuiObserver()
         NetworkAdapter(guiObserver, this)
         context = this
         loadingScreenLayout = findViewById(R.id.loadingScreenMain)
