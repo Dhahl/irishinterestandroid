@@ -11,16 +11,6 @@ import com.fasterxml.jackson.core.JsonProcessingException
 import java.io.IOException
 
 object UserController {
-    private var userController: UserController? = null
-
-    @get:Synchronized
-    val instance: UserController?
-        get() {
-            if (userController == null) {
-                userController = UserController()
-            }
-            return userController
-        }
 
     /**
      * This function is used to read the user from within shared preferences.
@@ -29,7 +19,6 @@ object UserController {
      * @return - User values object or null if there is no user saved.
      */
     @JvmStatic
-    @Synchronized
     fun getUser(context: Context): UserValues? {
         var userValues: UserValues? = UserValues()
         try {
@@ -54,7 +43,6 @@ object UserController {
      * @param context - The context of the application.
      */
     @JvmStatic
-    @Synchronized
     fun saveUserData(userValues: UserValues?, context: Context) {
         try {
             val sp = context.getSharedPreferences(
@@ -69,7 +57,7 @@ object UserController {
         }
     }
 
-    @Synchronized
+    @JvmStatic
     fun isUserLoggedIn(context: Context): Boolean {
         val sp = context.getSharedPreferences(
             context.getString(R.string.is_user_logged_in), Context.MODE_PRIVATE
@@ -78,7 +66,6 @@ object UserController {
     }
 
     @JvmStatic
-    @Synchronized
     fun setUserLoggedIn(isUserLoggedIn: Boolean, context: Context) {
         val sp = context.getSharedPreferences(
             context.getString(R.string.is_user_logged_in), Context.MODE_PRIVATE
@@ -88,7 +75,7 @@ object UserController {
         editor.apply()
     }
 
-    @Synchronized
+    @JvmStatic
     fun logout(context: Context) {
         setUserLoggedIn(false, context)
         val sp = context.getSharedPreferences(
