@@ -68,7 +68,7 @@ public class ContactUsActivity extends AppCompatActivity {
             request.setAction("contactUs");
             request.setApiKey("testApiKey");
             request.setToken("testTkn");
-            request.setIsTest(true);
+            request.setTest(true);
             request.setEnc(enc);
             SingletonAPI.getInstance().getApiInterface()
                     .contactUs(request).enqueue(new Callback<DefaultServerResponse>() {
