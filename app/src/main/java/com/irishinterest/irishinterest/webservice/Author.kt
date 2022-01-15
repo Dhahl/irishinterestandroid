@@ -1,13 +1,13 @@
 package com.irishinterest.irishinterest.webservice
 
-import android.util.ArrayMap
 import java.net.URL
 
-data class Author(val id: Int,
-                  val firstname: String,
-                  val lastname: String,
-                  val fullName: String = "${lastname}, ${firstname}",
-                  val displayName: String = "${firstname} ${lastname}"
+data class Author(
+    val id: Int,
+    val firstname: String,
+    val lastname: String,
+    val fullName: String = "${lastname}, ${firstname}",
+    val displayName: String = "${firstname} ${lastname}"
 )
 
 typealias AuthorsOfBooks = Map<String, List<Author>>
@@ -27,11 +27,11 @@ data class AuthorDetails(
     val imageURL: URL?
         get() {
             image?.let {
-              if(image.isEmpty()){
-                  return null
-              } else {
-                  return URL("https://irishinterest.ie/upload/${image}")
-              }
+                if (image.isEmpty()) {
+                    return null
+                } else {
+                    return URL("https://irishinterest.ie/upload/${image}")
+                }
             }
             return null
         }
@@ -39,21 +39,27 @@ data class AuthorDetails(
     /// Checks if there's anything useful we can shown as author bio details
     val isWorthToShow: Boolean
         get() {
-            if(imageURL != null) { return true }
-            if(profile?.isNotEmpty() == true) { return true }
+            if (imageURL != null) {
+                return true
+            }
+            if (profile?.isNotEmpty() == true) {
+                return true
+            }
             return false
         }
 
     companion object {
         @JvmStatic
         fun empty(): AuthorDetails {
-            return AuthorDetails(dob= null,
-            profile= null,
-            image= null,
-            altlink= null,
-            firstname= null,
-            lastname= null,
-            url= null)
+            return AuthorDetails(
+                dob = null,
+                profile = null,
+                image = null,
+                altlink = null,
+                firstname = null,
+                lastname = null,
+                url = null
+            )
         }
     }
 }

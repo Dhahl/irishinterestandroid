@@ -11,7 +11,7 @@ import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.schedulers.Schedulers
 
 
-class BooksViewModel: ViewModel() {
+class BooksViewModel : ViewModel() {
 
     private val ws: WebService = Repository().service
     private val pageSize: Int = 30

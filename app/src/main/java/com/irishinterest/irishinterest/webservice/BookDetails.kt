@@ -2,34 +2,34 @@ package com.irishinterest.irishinterest.webservice
 
 import java.net.URL
 import java.net.URLEncoder
-import java.util.*
 
-data class BookDetails(val authorid: Int,
-                       val categoryid: Int,
-                       val ebook: Int,
-                       val firstname: String,
-                       val genre: String,
-                       val hardback: Int,
-                       val id: Int,
-                       val isbn: String?,
-                       val isbn13: String,
-                       val language: String,
-                       val lastname: String,
-                       val pages: Int?,
-                       val paperback: Int,
-                       val publisher: String,
-                       val synopsis: String,
-                       val title: String,
-                       val vendor: String?,
-                       val vendorurl: String?,
-                       val published: String?
+data class BookDetails(
+    val authorid: Int,
+    val categoryid: Int,
+    val ebook: Int,
+    val firstname: String,
+    val genre: String,
+    val hardback: Int,
+    val id: Int,
+    val isbn: String?,
+    val isbn13: String,
+    val language: String,
+    val lastname: String,
+    val pages: Int?,
+    val paperback: Int,
+    val publisher: String,
+    val synopsis: String,
+    val title: String,
+    val vendor: String?,
+    val vendorurl: String?,
+    val published: String?
 ) {
     val author: String
         get() = arrayOf<String?>(firstname, lastname).mapNotNull { it }.joinToString(" ")
 
     val isbnToDisplay: String
         get() {
-            if(isbn13.isEmpty()) {
+            if (isbn13.isEmpty()) {
                 isbn?.let { return it }
                 return ""
             } else {
@@ -67,7 +67,27 @@ data class BookDetails(val authorid: Int,
     companion object {
         @JvmStatic
         fun empty(): BookDetails {
-            return BookDetails(authorid= -1, categoryid= 0, ebook= 0, firstname= "", genre= "", hardback= 0, id= -1, isbn= null, isbn13= "", language= "", lastname= "", pages= 0, paperback= 0, publisher= "", synopsis= "", title= "", vendor= null, vendorurl= null, published= null)
+            return BookDetails(
+                authorid = -1,
+                categoryid = 0,
+                ebook = 0,
+                firstname = "",
+                genre = "",
+                hardback = 0,
+                id = -1,
+                isbn = null,
+                isbn13 = "",
+                language = "",
+                lastname = "",
+                pages = 0,
+                paperback = 0,
+                publisher = "",
+                synopsis = "",
+                title = "",
+                vendor = null,
+                vendorurl = null,
+                published = null
+            )
         }
     }
 }

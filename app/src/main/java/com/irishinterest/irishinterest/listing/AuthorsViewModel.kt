@@ -8,7 +8,7 @@ import io.reactivex.Flowable
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.schedulers.Schedulers
 
-class AuthorsViewModel: ViewModel() {
+class AuthorsViewModel : ViewModel() {
 
     private val ws: WebService = Repository().service
 
@@ -86,14 +86,6 @@ class AuthorsViewModel: ViewModel() {
                 .observeOn(AndroidSchedulers.mainThread())
         )
     }
-//    FROM:
-//    func authors(ofBooks observable: Observable<[Book]>) -> Observable<AuthorsOfBooks> {
-//        observable.map { (books: [Book]) in
-//            books.map { $0.id }
-//        }.flatMap { bookIds in
-//            authors(byBookIds: bookIds)
-//        }
-//    }
 
     private fun authorsFlowableByBookIds(bookIds: List<Int>): Flowable<AuthorsOfBooks> {
         val uniqueIds = bookIds.toSortedSet()

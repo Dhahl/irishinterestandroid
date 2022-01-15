@@ -9,7 +9,7 @@ import com.irishinterest.irishinterest.webservice.WebService
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.schedulers.Schedulers
 
-class CategoriesViewModel: ViewModel() {
+class CategoriesViewModel : ViewModel() {
     private val ws: WebService = Repository().service
 
     fun categories(): LiveData<List<Category>> {
