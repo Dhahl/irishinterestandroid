@@ -23,6 +23,7 @@ import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.FragmentPagerAdapter
 import androidx.viewpager.widget.ViewPager
 import com.google.android.material.tabs.TabLayout
+import com.irishinterest.irishinterest.categories.CategoryListingFragment
 import com.irishinterest.irishinterest.fragments.authors.AuthorsFragment
 import com.irishinterest.irishinterest.fragments.authors.AuthorsProvider
 import com.irishinterest.irishinterest.fragments.categories.CategoryFragment
@@ -40,7 +41,7 @@ import java.util.*
 
 class MainActivity : AppCompatActivity(), Notification {
     //Fragments
-    private val categoryFragment = CategoryFragment()
+    private val categoryFragment = CategoryListingFragment()
     private val mainScreenFragment = MainScreenFragment()
     private val authorsFragment = AuthorsFragment()
     private val searchFragment = SearchFragment()
@@ -77,7 +78,7 @@ class MainActivity : AppCompatActivity(), Notification {
             
             createMainScreenFragment()
             createAuthorsScreenFragment()
-            createCategoryScreenFragment()
+//            createCategoryScreenFragment()
 
             drawerLayout = findViewById(R.id.drawerLayout)
             val actionBarDrawerToggle = ActionBarDrawerToggle(this, drawerLayout, R.string.drawer_open, R.string.drawer_close)
@@ -329,10 +330,10 @@ class MainActivity : AppCompatActivity(), Notification {
         AuthorsProvider(guiObserver, authorsFragment)
     }
 
-    private fun createCategoryScreenFragment() {
+//    private fun createCategoryScreenFragment() {
         //Fragment Providers
-        CategoryProvider(guiObserver, categoryFragment)
-    }
+//        CategoryProvider(guiObserver, categoryFragment)
+//    }
 
     internal class ViewPagerAdapter(manager: FragmentManager?) : FragmentPagerAdapter(manager!!) {
         private val mFragmentList: MutableList<Fragment> = ArrayList()

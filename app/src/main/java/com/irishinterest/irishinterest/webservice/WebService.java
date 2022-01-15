@@ -12,31 +12,33 @@ public interface WebService {
 
     // AUTHORS
 
-    @GET("?value=authors&type=getAll&offset=0")
-    Flowable<List<Author>> authors();
+    @GET("request.php?apiKey=testApiKey?value=authors&type=getAll&offset=0")
+    Flowable<List<Author>> authors(
 
-    @GET("?value=authors&type=searchByName")
+    );
+
+    @GET("request.php?apiKey=testApiKey?value=authors&type=searchByName")
     Flowable<List<Author>> authorsSearchByName(
             @Query("searchBy") String name
     );
 
-    @GET("?value=authors&type=byLastNameStartsWith")
+    @GET("request.php?apiKey=testApiKey?value=authors&type=byLastNameStartsWith")
     Flowable<List<Author>> authorsByLetter(
             @Query("startsWith") String letter
     );
 
-    @GET("?value=authors&type=count")
+    @GET("request.php?apiKey=testApiKey?value=authors&type=count")
     Flowable<Integer> authorsCount();
 
-    @GET("?value=authors&type=abcCount")
+    @GET("request.php?apiKey=testApiKey?value=authors&type=abcCount")
     Flowable<List<CountByLetter>> authorsAtoZCount();
 
-    @GET("?value=authors&type=detailsById")
+    @GET("request.php?apiKey=testApiKey?value=authors&type=detailsById")
     Flowable<AuthorDetails> authorDetails(
             @Query("authorId") Integer authorId
     );
 
-    @GET("?value=authors&type=detailsById")
+    @GET("request.php?apiKey=testApiKey?value=authors&type=detailsById")
     Flowable<Map<String, List<Author>>> authorsByBookIds(
             @Query("ids") String bookIds
     );
@@ -44,40 +46,40 @@ public interface WebService {
 
     // CATEGORIES
 
-    @GET("?value=categories")
+    @GET("request.php?apiKey=testApiKey?value=categories")
     Flowable<List<Category>> categories();
 
 
     // BOOKS
 
-    @GET("?value=books&type=searchByName")
+    @GET("request.php?apiKey=testApiKey?value=books&type=searchByName")
     Flowable<List<Book>> booksSearchByName(
             @Query("searchBy") String name
     );
 
-    @GET("?value=books&type=byAuthorID")
+    @GET("request.php?apiKey=testApiKey?value=books&type=byAuthorID")
     Flowable<List<Book>> booksByAuthorID(
             @Query("authorID") Integer authorID,
             @Query("offset") Integer offset
     );
 
-    @GET("?value=books&type=byCategory")
+    @GET("request.php?apiKey=testApiKey?value=books&type=byCategory")
     Flowable<List<Book>> booksByCategoryId(
             @Query("authorID") Integer categoryId,
             @Query("offset") Integer offset
     );
 
-    @GET("?value=books&type=getLatest2")
+    @GET("request.php?apiKey=testApiKey?value=books&type=getLatest2")
     Flowable<List<Book>> booksLatest(
             @Query("offset") Integer offset
     );
 
-    @GET("?value=books&type=getPublished")
+    @GET("request.php?apiKey=testApiKey?value=books&type=getPublished")
     Flowable<List<Book>> booksPublished(
             @Query("offset") Integer offset
     );
 
-    @GET("?value=books&type=getComingSoon")
+    @GET("request.php?apiKey=testApiKey?value=books&type=getComingSoon")
     Flowable<List<Book>> booksComingSoon(
             @Query("offset") Integer offset
     );
@@ -85,7 +87,7 @@ public interface WebService {
 
     // BOOK DETAILS
 
-    @GET("?value=books&type=getById2")
+    @GET("request.php?apiKey=testApiKey?value=books&type=getById2")
     Flowable<BookDetails> bookDetails(
             @Query("bookId") Integer bookID
     );
