@@ -10,7 +10,7 @@ data class Author(val id: Int,
                   val displayName: String = "${firstname} ${lastname}"
 )
 
-typealias AuthorsOfBooks = ArrayMap<String, ArrayList<Author>>
+typealias AuthorsOfBooks = Map<String, List<Author>>
 
 data class AuthorDetails(
     val dob: String? = null,

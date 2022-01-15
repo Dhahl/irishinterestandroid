@@ -46,8 +46,8 @@ public interface WebService {
     //}).catchAndReturn(AuthorDetails.empty())
 
     @GET("?value=authors&type=detailsById")
-    Flowable<ArrayMap<String, ArrayList<Author>>> authorsByBookIds(
-            @Query("ids") List<Integer> bookIds
+    Flowable<Map<String, List<Author>>> authorsByBookIds(
+            @Query("ids") String bookIds
     );
 //    func authors(byBookIds: [Int]) -> Observable<AuthorsOfBooks> {
 //        let uniqueIds = Set(byBookIds)
