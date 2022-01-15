@@ -24,7 +24,7 @@ class CategoryListingFragment: Fragment() {
     ): View? {
         val view = inflater.inflate(R.layout.categories, container, false)
         category_recycler_view = view.findViewById<RecyclerView>(R.id.categoryRecyclerView)
-        category_recycler_view.layoutManager = LinearLayoutManager(this)
+        category_recycler_view.layoutManager = LinearLayoutManager(view.context)
 
         startLoading()
 
