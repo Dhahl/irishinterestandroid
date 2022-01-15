@@ -6,8 +6,8 @@ import java.net.URL
 data class Author(val id: Int,
                   val firstname: String,
                   val lastname: String,
-                  val fullName: String = "{lastname}, {firstname}",
-                  val displayName: String = "{firstname} {lastname}"
+                  val fullName: String = "${lastname}, ${firstname}",
+                  val displayName: String = "${firstname} ${lastname}"
 )
 
 typealias AuthorsOfBooks = ArrayMap<String, ArrayList<Author>>
@@ -30,7 +30,7 @@ data class AuthorDetails(
               if(image.isEmpty()){
                   return null
               } else {
-                  return URL("https://irishinterest.ie/upload/{image}")
+                  return URL("https://irishinterest.ie/upload/${image}")
               }
             }
             return null
