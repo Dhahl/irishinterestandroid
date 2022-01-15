@@ -55,13 +55,7 @@ public interface WebService {
 //        let params: String = "?value=authors&type=byBookIds&apiKey=testApiKey&ids=\(paramIds)"
 //          ...
 //        }).catchAndReturn([:])
-//    func authors(ofBooks observable: Observable<[Book]>) -> Observable<AuthorsOfBooks> {
-//        observable.map { (books: [Book]) in
-//            books.map { $0.id }
-//        }.flatMap { bookIds in
-//            authors(byBookIds: bookIds)
-//        }
-//    }
+
 
 
     // CATEGORIES

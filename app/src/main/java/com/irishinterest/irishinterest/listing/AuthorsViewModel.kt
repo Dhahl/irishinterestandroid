@@ -4,9 +4,9 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.LiveDataReactiveStreams
 import androidx.lifecycle.ViewModel
 import com.irishinterest.irishinterest.webservice.*
+import io.reactivex.Flowable
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.schedulers.Schedulers
-import java.util.Comparator
 
 class AuthorsViewModel: ViewModel() {
 
@@ -68,15 +68,38 @@ class AuthorsViewModel: ViewModel() {
     }
 
     fun authorsByBookIds(byBookIds: List<Int>): LiveData<AuthorsOfBooks> {
-        val uniqueIds = byBookIds.toSortedSet()
-        val paramIds: String = uniqueIds.joinToString(separator = ",")
         return LiveDataReactiveStreams.fromPublisher(
-            ws.authorsByBookIds(paramIds)
-                .onErrorReturnItem(emptyMap<String, List<Author>>())
+            authorsFlowableByBookIds(byBookIds)
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
         )
     }
 
+    fun authorsOfBooksFlowable(ofBookFlowable: Flowable<List<Book>>): LiveData<AuthorsOfBooks> {
+        return LiveDataReactiveStreams.fromPublisher(
+            ofBookFlowable.map {
+                it.map { it.id }
+            }.flatMap {
+                authorsFlowableByBookIds(it)
+            }
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+        )
+    }
+//    FROM:
+//    func authors(ofBooks observable: Observable<[Book]>) -> Observable<AuthorsOfBooks> {
+//        observable.map { (books: [Book]) in
+//            books.map { $0.id }
+//        }.flatMap { bookIds in
+//            authors(byBookIds: bookIds)
+//        }
+//    }
+
+    private fun authorsFlowableByBookIds(bookIds: List<Int>): Flowable<AuthorsOfBooks> {
+        val uniqueIds = bookIds.toSortedSet()
+        val paramIds: String = uniqueIds.joinToString(separator = ",")
+        return ws.authorsByBookIds(paramIds)
+            .onErrorReturnItem(emptyMap<String, List<Author>>())
+    }
 
 }
