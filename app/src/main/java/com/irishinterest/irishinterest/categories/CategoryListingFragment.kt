@@ -30,7 +30,6 @@ class CategoryListingFragment: Fragment() {
         progress_bar = view.findViewById<ProgressBar>(R.id.progress_bar)
         category_recycler_view = view.findViewById<RecyclerView>(R.id.categoryRecyclerView)
         val linearLayout =  LinearLayoutManager(view.context)
-        linearLayout.isAutoMeasureEnabled = false
         category_recycler_view.layoutManager = linearLayout
         startLoading()
 

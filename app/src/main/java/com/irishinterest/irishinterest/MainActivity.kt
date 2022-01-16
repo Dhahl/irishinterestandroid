@@ -26,8 +26,6 @@ import com.google.android.material.tabs.TabLayout
 import com.irishinterest.irishinterest.categories.CategoryListingFragment
 import com.irishinterest.irishinterest.fragments.authors.AuthorsFragment
 import com.irishinterest.irishinterest.fragments.authors.AuthorsProvider
-import com.irishinterest.irishinterest.fragments.categories.CategoryFragment
-import com.irishinterest.irishinterest.fragments.categories.CategoryProvider
 import com.irishinterest.irishinterest.fragments.mainScreen.MainScreenFragment
 import com.irishinterest.irishinterest.fragments.mainScreen.MainScreenProvider
 import com.irishinterest.irishinterest.fragments.more.MoreScreenFragment
