@@ -21,7 +21,7 @@ class CategoryListingAdapter(private var categories : List<Category>,
 
     override fun onBindViewHolder(holder: CategoryViewHolder, position: Int) {
         val category: Category = categories[position]
-        holder.update(name = category.displayName)
+        holder.update(category.displayName)
         holder.itemView.setOnClickListener(onClicked(position))
     }
 

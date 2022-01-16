@@ -72,7 +72,7 @@ public class BooksActivity extends AppCompatActivity {
             String type = extras.getString("type");
             if(type.equals("category")){
                 categoryText.setText(extras.getString("categoryName"));
-                configureBooksRecyclerView(extras.getString("categoryId"), Module.CATEGORIES);
+                configureBooksRecyclerView(String.valueOf(extras.getInt("categoryId")), Module.CATEGORIES);
             } else if(type.equals("authors")){
                 categoryText.setText(extras.getString("firstName") + ", " + extras.getString("lastName"));
                 configureBooksRecyclerView(extras.getString("id"), Module.AUTHORS);
