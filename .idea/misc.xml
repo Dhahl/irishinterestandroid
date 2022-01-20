@@ -9,7 +9,12 @@
         <entry key="app/src/main/res/layout/activity_home.xml" value="0.12708333333333333" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.12395833333333334" />
         <entry key="app/src/main/res/layout/author_list_item.xml" value="0.12454710144927536" />
+        <entry key="app/src/main/res/layout/authors_screen_fragment.xml" value="0.1" />
+        <entry key="app/src/main/res/layout/categories.xml" value="0.1" />
+        <entry key="app/src/main/res/layout/category_item_list.xml" value="0.1046875" />
+        <entry key="app/src/main/res/layout/fragment_dogs_list.xml" value="0.1" />
         <entry key="app/src/main/res/layout/search_fragment.xml" value="0.12454710144927536" />
+        <entry key="app/src/main/res/layout/title_detail_list_item.xml" value="0.375" />
       </map>
     </option>
   </component>

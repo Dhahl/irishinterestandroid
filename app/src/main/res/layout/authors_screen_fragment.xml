@@ -1,74 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/background"
-    android:weightSum="100">
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="8"
-        android:orientation="horizontal"
-        android:weightSum="100"
-        android:gravity="center_vertical"
-        android:background="@color/colorPrimary">
-        <TextView
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="40"
-            android:text="All authors"
-            android:textStyle="bold"
-            android:textSize="17dp"
-            android:textColor="@color/navTextColor"
-
-            android:gravity="center"/>
-        <ImageButton
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:src="@drawable/ic_filter_by"
-            android:background="@android:color/transparent"
-            android:layout_marginTop="10dp"
-            android:layout_marginBottom="10dp"
-            android:layout_weight="10"
-            android:visibility="gone"
-            android:scaleType="fitCenter"
-            />
-        <Button
-            android:layout_marginTop="10dp"
-            android:layout_marginBottom="10dp"
-            android:layout_marginRight="10dp"
-            android:layout_marginLeft="10dp"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:background="#f3c946"
-            android:text="All"
-            android:visibility="gone"
-            android:textColor="@color/navTextColor"
-            android:id="@+id/filterButton"
-            android:layout_weight="10"/>
-        <EditText
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:background="@drawable/white_background"
-            android:layout_weight="60"
-            android:layout_marginTop="8dp"
-            android:layout_marginBottom="8dp"
-            android:layout_marginRight="8dp"
-            android:hint="Search authors"
-            android:id="@+id/searchAuthorsEditText"
-            android:textAlignment="center"
-            android:imeOptions="actionSearch"
-            android:inputType="text"/>
-
-
-    </LinearLayout>
-
+    android:layout_margin="8dp"
+    >
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/authorListRecyclerView"
+        android:id="@+id/authors_recycler_view"
         android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="90"
-        android:visibility="visible"/>
-
+        android:layout_height="match_parent"
+        android:visibility="visible" />
 </LinearLayout>

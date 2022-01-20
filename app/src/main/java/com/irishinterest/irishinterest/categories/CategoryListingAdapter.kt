@@ -8,8 +8,8 @@ import com.irishinterest.irishinterest.webservice.Category
 import com.irishinterest.irishinterest.R
 
 class CategoryListingAdapter(private var categories : List<Category>,
-                         private var inflater: LayoutInflater,
-                         private val onCategoryListener: (Category) -> Unit) : RecyclerView.Adapter<CategoryViewHolder>() {
+                            private var inflater: LayoutInflater,
+                            private val onCategoryListener: (Category) -> Unit) : RecyclerView.Adapter<CategoryViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CategoryViewHolder {
         return CategoryViewHolder(inflater.inflate(R.layout.category_list_item, parent, false))
@@ -38,4 +38,3 @@ class CategoryListingAdapter(private var categories : List<Category>,
         super.onViewRecycled(holder)
     }
 }
-

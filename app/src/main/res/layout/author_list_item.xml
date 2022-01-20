@@ -4,10 +4,8 @@
     android:orientation="horizontal"
     android:layout_width="match_parent"
     android:layout_height="50dp"
-    android:layout_marginTop="10dp"
-    android:layout_marginLeft="10dp"
-    android:layout_marginRight="10dp"
-    android:id="@+id/publishedBooks"
+    android:layout_margin="10dp"
+    android:id="@+id/author_list_item_layout"
     android:background="@color/bookContainerBackground">
     <ImageView
         android:scaleType="fitCenter"

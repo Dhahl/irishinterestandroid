@@ -51,7 +51,7 @@ class AuthorsViewModel : ViewModel() {
     fun authorsAtoZCount(): LiveData<List<CountByLetter>> {
         return LiveDataReactiveStreams.fromPublisher(
             ws.authorsAtoZCount()
-                .map { it.filter { it.alpha.first().isLetter() } }
+//                .map { it.filter { letter -> letter.alpha.first().isLetter() == false } }
                 .onErrorReturnItem(emptyList())
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())

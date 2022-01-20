@@ -16,7 +16,7 @@ import com.irishinterest.irishinterest.R
 import com.irishinterest.irishinterest.listing.CategoriesViewModel
 import com.irishinterest.irishinterest.webservice.Category
 
-class CategoryListingFragment: Fragment() {
+class CategoriesFragment: Fragment() {
 
     private lateinit var viewModel: CategoriesViewModel
     private lateinit var category_recycler_view: RecyclerView

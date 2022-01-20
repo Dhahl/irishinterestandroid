@@ -23,9 +23,8 @@ import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.FragmentPagerAdapter
 import androidx.viewpager.widget.ViewPager
 import com.google.android.material.tabs.TabLayout
-import com.irishinterest.irishinterest.categories.CategoryListingFragment
-import com.irishinterest.irishinterest.fragments.authors.AuthorsFragment
-import com.irishinterest.irishinterest.fragments.authors.AuthorsProvider
+import com.irishinterest.irishinterest.authors.AuthorsListingFragment
+import com.irishinterest.irishinterest.categories.CategoriesFragment
 import com.irishinterest.irishinterest.fragments.mainScreen.MainScreenFragment
 import com.irishinterest.irishinterest.fragments.mainScreen.MainScreenProvider
 import com.irishinterest.irishinterest.fragments.more.MoreScreenFragment
@@ -39,9 +38,9 @@ import java.util.*
 
 class MainActivity : AppCompatActivity(), Notification {
     //Fragments
-    private val categoryFragment = CategoryListingFragment()
+    private val categoryFragment = CategoriesFragment()
     private val mainScreenFragment = MainScreenFragment()
-    private val authorsFragment = AuthorsFragment()
+    private val authorsFragment = AuthorsListingFragment()
     private val searchFragment = SearchFragment()
 
     //Layouts
@@ -75,7 +74,7 @@ class MainActivity : AppCompatActivity(), Notification {
             setSupportActionBar(toolbar)
             
             createMainScreenFragment()
-            createAuthorsScreenFragment()
+//            createAuthorsScreenFragment()
 //            createCategoryScreenFragment()
 
             drawerLayout = findViewById(R.id.drawerLayout)
@@ -324,9 +323,9 @@ class MainActivity : AppCompatActivity(), Notification {
         MainScreenProvider(guiObserver, mainScreenFragment)
     }
 
-    private fun createAuthorsScreenFragment() {
-        AuthorsProvider(guiObserver, authorsFragment)
-    }
+//    private fun createAuthorsScreenFragment() {
+//        AuthorsProvider(guiObserver, authorsFragment)
+//    }
 
 //    private fun createCategoryScreenFragment() {
         //Fragment Providers
