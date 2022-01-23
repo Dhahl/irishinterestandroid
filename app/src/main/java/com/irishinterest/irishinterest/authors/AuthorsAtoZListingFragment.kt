@@ -1,27 +1,18 @@
 package com.irishinterest.irishinterest.authors
 
-import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Button
-import android.widget.EditText
-import android.widget.ProgressBar
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.irishinterest.irishinterest.BooksActivity
 import com.irishinterest.irishinterest.R
-import com.irishinterest.irishinterest.categories.CategoryListingAdapter
-import com.irishinterest.irishinterest.listing.AuthorsViewModel
-import com.irishinterest.irishinterest.listing.CategoriesViewModel
-import com.irishinterest.irishinterest.webservice.Category
 import com.irishinterest.irishinterest.webservice.CountByLetter
 
-class AuthorsListingFragment: Fragment() {
+class AuthorsAtoZListingFragment: Fragment() {
 
         private lateinit var viewModel: AuthorsViewModel
         private lateinit var recycler_view: RecyclerView

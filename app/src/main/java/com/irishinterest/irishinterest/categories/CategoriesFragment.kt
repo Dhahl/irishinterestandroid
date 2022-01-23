@@ -13,7 +13,6 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.irishinterest.irishinterest.BooksActivity
 import com.irishinterest.irishinterest.R
-import com.irishinterest.irishinterest.listing.CategoriesViewModel
 import com.irishinterest.irishinterest.webservice.Category
 
 class CategoriesFragment: Fragment() {

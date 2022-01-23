@@ -7,30 +7,30 @@
     android:background="@drawable/background">
 
     <com.google.android.material.appbar.AppBarLayout
+        android:id="@+id/appbaar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/appbaar"
         android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar">
 
         <androidx.appcompat.widget.Toolbar
             android:id="@+id/toolbar"
             android:layout_width="match_parent"
             android:layout_height="50sp"
-            android:background="?attr/colorPrimary"
-            app:layout_scrollFlags="scroll|enterAlways"
-            app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
-            android:padding="0dp"
             android:layout_gravity="start"
-            android:gravity="start">
+            android:background="?attr/colorPrimary"
+            android:gravity="start"
+            android:padding="0dp"
+            app:layout_scrollFlags="scroll|enterAlways"
+            app:popupTheme="@style/ThemeOverlay.AppCompat.Light">
+
             <ImageView
                 android:id="@+id/action_bar_logo"
                 android:layout_width="wrap_content"
                 android:layout_height="20dp"
-                android:scaleType="fitCenter"
-                android:adjustViewBounds="true"
                 android:layout_marginBottom="5dp"
-                android:src="@drawable/irsih_interest_text_translucent"
-                />
+                android:adjustViewBounds="true"
+                android:scaleType="fitCenter"
+                android:src="@drawable/irsih_interest_text_translucent" />
         </androidx.appcompat.widget.Toolbar>
 
     </com.google.android.material.appbar.AppBarLayout>
@@ -60,6 +60,7 @@
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="90"
-        android:visibility="visible"/>
+        android:visibility="visible"
+        android:overScrollMode="never"/>
 
 </LinearLayout>

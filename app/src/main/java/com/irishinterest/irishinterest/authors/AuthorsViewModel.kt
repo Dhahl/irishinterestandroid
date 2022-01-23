@@ -1,4 +1,4 @@
-package com.irishinterest.irishinterest.listing
+package com.irishinterest.irishinterest.authors
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.LiveDataReactiveStreams
@@ -51,7 +51,6 @@ class AuthorsViewModel : ViewModel() {
     fun authorsAtoZCount(): LiveData<List<CountByLetter>> {
         return LiveDataReactiveStreams.fromPublisher(
             ws.authorsAtoZCount()
-//                .map { it.filter { letter -> letter.alpha.first().isLetter() == false } }
                 .onErrorReturnItem(emptyList())
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())

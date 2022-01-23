@@ -15,7 +15,7 @@
         <include layout="@layout/tabs_layout_toolbar"
             app:layout_constraintTop_toTopOf="parent"
             android:id="@+id/tabsss"
-            android:visibility="gone"/>
+            android:visibility="gone" />
 
         <include layout="@layout/loading_screen"
             android:visibility="visible"
@@ -30,11 +30,15 @@
             android:visibility="gone"/>
 
         <FrameLayout
-            app:layout_constraintTop_toBottomOf="@id/tabsss"
             android:id="@+id/fragmentMain"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:visibility="visible"/>
+            android:visibility="visible"
+            app:layout_constraintTop_toBottomOf="@id/tabsss"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            tools:visibility="visible" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

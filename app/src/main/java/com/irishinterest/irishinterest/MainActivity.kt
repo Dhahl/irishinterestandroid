@@ -23,7 +23,7 @@ import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.FragmentPagerAdapter
 import androidx.viewpager.widget.ViewPager
 import com.google.android.material.tabs.TabLayout
-import com.irishinterest.irishinterest.authors.AuthorsListingFragment
+import com.irishinterest.irishinterest.authors.AuthorsAtoZListingFragment
 import com.irishinterest.irishinterest.categories.CategoriesFragment
 import com.irishinterest.irishinterest.fragments.mainScreen.MainScreenFragment
 import com.irishinterest.irishinterest.fragments.mainScreen.MainScreenProvider
@@ -40,7 +40,7 @@ class MainActivity : AppCompatActivity(), Notification {
     //Fragments
     private val categoryFragment = CategoriesFragment()
     private val mainScreenFragment = MainScreenFragment()
-    private val authorsFragment = AuthorsListingFragment()
+    private val authorsFragment = AuthorsAtoZListingFragment()
     private val searchFragment = SearchFragment()
 
     //Layouts
