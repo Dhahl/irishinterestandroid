@@ -14,9 +14,8 @@
 
     <androidx.recyclerview.widget.RecyclerView
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
         android:id="@+id/categoryRecyclerView"
-        android:visibility="visible"
-        android:overScrollMode="never"/>
+        android:visibility="visible" />
 
 </LinearLayout>

@@ -5,10 +5,14 @@ import java.net.URL
 data class Author(
     val id: Int,
     val firstname: String,
-    val lastname: String,
-    val fullName: String = "${lastname}, ${firstname}",
-    val displayName: String = "${firstname} ${lastname}"
-)
+    val lastname: String
+) {
+    val fullName: String
+        get() = "${lastname}, ${firstname}"
+    val displayName: String
+        get() = "${firstname} ${lastname}"
+}
+
 
 typealias AuthorsOfBooks = Map<String, List<Author>>
 

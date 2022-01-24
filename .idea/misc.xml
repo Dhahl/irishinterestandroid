@@ -6,6 +6,9 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="app/src/main/res/layout-w1240dp/content_scrolling.xml" value="0.103515625" />
+        <entry key="app/src/main/res/layout/activity_authors_by_letter.xml" value="0.1503623188405797" />
+        <entry key="app/src/main/res/layout/activity_content_scrolling.xml" value="0.12132725430597771" />
         <entry key="app/src/main/res/layout/activity_home.xml" value="0.12708333333333333" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.1" />
         <entry key="app/src/main/res/layout/author_list_item.xml" value="0.12454710144927536" />
@@ -13,6 +16,7 @@
         <entry key="app/src/main/res/layout/authors_screen_fragment.xml" value="0.1" />
         <entry key="app/src/main/res/layout/categories.xml" value="0.1" />
         <entry key="app/src/main/res/layout/category_item_list.xml" value="0.1046875" />
+        <entry key="app/src/main/res/layout/content_scrolling.xml" value="0.1" />
         <entry key="app/src/main/res/layout/fragment_dogs_list.xml" value="0.1" />
         <entry key="app/src/main/res/layout/main_screen.xml" value="0.1621376811594203" />
         <entry key="app/src/main/res/layout/search_fragment.xml" value="0.12454710144927536" />

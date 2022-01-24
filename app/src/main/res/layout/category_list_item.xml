@@ -11,6 +11,6 @@
         android:id="@+id/categoryText"
         android:gravity="center_vertical"
         android:paddingStart="16dp"
-        android:textSize="20sp"
+        style="@style/TextAppearance.AppCompat.SearchResult.Title"
         />
 </LinearLayout>

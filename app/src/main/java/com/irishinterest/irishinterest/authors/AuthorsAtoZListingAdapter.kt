@@ -11,7 +11,7 @@ import com.irishinterest.irishinterest.webservice.CountByLetter
 
 class AuthorsAtoZListingAdapter(private var list : List<CountByLetter>,
                                 private var inflater: LayoutInflater,
-                                private val onSelected: (CountByLetter) -> Unit) : RecyclerView.Adapter<TitleDetailViewHolder>() {
+                                private val onLetterListener: (CountByLetter) -> Unit) : RecyclerView.Adapter<TitleDetailViewHolder>() {
 
         override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): TitleDetailViewHolder {
             return TitleDetailViewHolder(inflater.inflate(R.layout.title_detail_list_item, parent, false))
@@ -30,7 +30,7 @@ class AuthorsAtoZListingAdapter(private var list : List<CountByLetter>,
         private fun onClicked(position: Int): View.OnClickListener? {
             return View.OnClickListener {
                 if (0 <= position && position < list.count()) {
-                    onSelected.invoke(list[position])
+                    onLetterListener.invoke(list[position])
                 }
             }
         }

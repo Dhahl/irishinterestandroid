@@ -16,6 +16,11 @@
         android:theme="@style/MyMaterialTheme"
         android:usesCleartextTraffic="true">
         <activity
+            android:name=".authors.AuthorsByLetterActivity"
+            android:exported="false"
+            android:label="@string/title_activity_authors_by_letter"
+            android:theme="@style/MyMaterialTheme.NoActionBar" />
+        <activity
             android:name=".MainActivity"
             android:configChanges="orientation"
             android:exported="true"
@@ -23,6 +28,7 @@
             android:windowSoftInputMode="adjustNothing">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>

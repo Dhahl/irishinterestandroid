@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="horizontal"
     android:layout_width="match_parent"
     android:layout_height="50sp"
@@ -8,24 +10,25 @@
 
     <TextView
         android:id="@+id/title_text"
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="match_parent"
         android:gravity="center_vertical"
         android:layout_weight="85"
         android:paddingStart="16dp"
-        android:textSize="20sp"
-        android:tooltipText="C"
+        style="@style/TextAppearance.AppCompat.SearchResult.Title"
+        android:focusable="false"
+        android:focusableInTouchMode="false"
+        android:clickable="false"
         />
 
     <TextView
         android:id="@+id/detail_text"
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="match_parent"
         android:gravity="center_vertical"
         android:layout_weight="15"
         android:textAlignment="textEnd"
-        android:textSize="14sp"
-        android:tooltipText="1890"
+        style="@style/TextAppearance.AppCompat.SearchResult.Subtitle"
         android:paddingEnd="16dp"
         />
 
