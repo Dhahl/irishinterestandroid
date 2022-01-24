@@ -16,9 +16,6 @@
         android:layout_weight="85"
         android:paddingStart="16dp"
         style="@style/TextAppearance.AppCompat.SearchResult.Title"
-        android:focusable="false"
-        android:focusableInTouchMode="false"
-        android:clickable="false"
         />
 
     <TextView
