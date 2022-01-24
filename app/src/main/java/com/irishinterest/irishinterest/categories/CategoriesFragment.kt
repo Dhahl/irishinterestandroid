@@ -13,6 +13,8 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.irishinterest.irishinterest.BooksActivity
 import com.irishinterest.irishinterest.R
+import com.irishinterest.irishinterest.authors.TitleDetailListingAdapter
+import com.irishinterest.irishinterest.authors.TitleDetailViewHolder
 import com.irishinterest.irishinterest.webservice.Category
 
 class CategoriesFragment: Fragment() {
@@ -42,11 +44,18 @@ class CategoriesFragment: Fragment() {
             //make sure it's not reloaded, when we re-visit from <- Back button
             return
         }
-        category_recycler_view.adapter = CategoryListingAdapter(
+        category_recycler_view.adapter = TitleDetailListingAdapter<Category>(
             categories.orEmpty(),
             layoutInflater,
-            { category -> openCategory(category) }
+            { category: Category -> category.displayName},
+            { _: Category -> ""},
+            { category: Category -> openCategory(category) }
         )
+//        category_recycler_view.adapter = CategoryListingAdapter(
+//            categories.orEmpty(),
+//            layoutInflater,
+//            { category -> openCategory(category) }
+//        )
         stopLoading()
     }
 

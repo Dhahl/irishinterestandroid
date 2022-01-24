@@ -5,16 +5,23 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.irishinterest.irishinterest.R
-import com.irishinterest.irishinterest.webservice.Author
-import com.irishinterest.irishinterest.webservice.CountByLetter
 
-
-class AuthorsByLetterListingAdapter(private var list : List<Author>,
-                                    private var inflater: LayoutInflater,
-                                    private val onAuthorListener: (Author) -> Unit) : RecyclerView.Adapter<TitleDetailViewHolder>() {
+class TitleDetailListingAdapter<Type>(
+    private var list: List<Type>,
+    private var inflater: LayoutInflater,
+    private var titleBinder: (Type) -> String,
+    private var detailBinder: (Type) -> String,
+    private var clickListener: (Type) -> Unit
+) : RecyclerView.Adapter<TitleDetailViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): TitleDetailViewHolder {
-        return TitleDetailViewHolder(inflater.inflate(R.layout.title_detail_list_item, parent, false))
+        return TitleDetailViewHolder(
+            inflater.inflate(
+                R.layout.title_detail_list_item,
+                parent,
+                false
+            )
+        )
     }
 
     override fun getItemCount(): Int {
@@ -22,15 +29,15 @@ class AuthorsByLetterListingAdapter(private var list : List<Author>,
     }
 
     override fun onBindViewHolder(holder: TitleDetailViewHolder, position: Int) {
-        val item: Author = list[position]
-        holder.update(item.fullName, "")
+        val item: Type = list[position]
+        holder.update(titleBinder(item), detailBinder(item))
         holder.itemView.setOnClickListener(onClicked(position))
     }
 
     private fun onClicked(position: Int): View.OnClickListener? {
         return View.OnClickListener {
             if (0 <= position && position < list.count()) {
-                onAuthorListener.invoke(list[position])
+                clickListener.invoke(list[position])
             }
         }
     }
@@ -39,4 +46,5 @@ class AuthorsByLetterListingAdapter(private var list : List<Author>,
         holder.itemView.setOnClickListener(null)
         super.onViewRecycled(holder)
     }
+
 }

@@ -3,9 +3,6 @@ package com.irishinterest.irishinterest.authors
 import android.os.Bundle
 import android.view.View
 import android.widget.ProgressBar
-import com.google.android.material.appbar.CollapsingToolbarLayout
-import com.google.android.material.floatingactionbutton.FloatingActionButton
-import com.google.android.material.snackbar.Snackbar
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
@@ -13,7 +10,6 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.irishinterest.irishinterest.R
 import com.irishinterest.irishinterest.webservice.Author
-import com.irishinterest.irishinterest.webservice.CountByLetter
 
 class AuthorsByLetterActivity : AppCompatActivity() {
 
@@ -50,10 +46,12 @@ class AuthorsByLetterActivity : AppCompatActivity() {
             //make sure it's not reloaded, when we re-visit from <- Back button
             return
         }
-        recycler_view.adapter = AuthorsByLetterListingAdapter(
+        recycler_view.adapter = TitleDetailListingAdapter<Author>(
             list.orEmpty(),
             layoutInflater,
-            { author -> onAuthorSeleted(author) }
+            { author -> author.fullName },
+            { _ -> "" },
+            { author -> onAuthorSeleted(author) },
         )
         stopLoading()
     }
