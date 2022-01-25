@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.View
 import android.widget.ProgressBar
 import androidx.appcompat.app.AppCompatActivity
+import androidx.appcompat.widget.Toolbar
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -25,6 +26,13 @@ class AuthorsByLetterActivity : AppCompatActivity() {
         recycler_view = findViewById<RecyclerView>(R.id.authors_recycler_view)
         val linearLayout = LinearLayoutManager(this)
         recycler_view.layoutManager = linearLayout
+
+        val toolbar: Toolbar = findViewById<Toolbar>(R.id.toolbar)
+        setSupportActionBar(toolbar)
+        getSupportActionBar()?.setDisplayShowTitleEnabled(false)
+        getSupportActionBar()?.setHomeButtonEnabled(true)
+        getSupportActionBar()?.setDisplayHomeAsUpEnabled(true)
+
         startLoading()
 
         viewModel = ViewModelProvider(this).get(AuthorsViewModel::class.java)
