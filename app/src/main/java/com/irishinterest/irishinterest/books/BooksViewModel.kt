@@ -1,4 +1,4 @@
-package com.irishinterest.irishinterest.listing
+package com.irishinterest.irishinterest.books
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.LiveDataReactiveStreams
