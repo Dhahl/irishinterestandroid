@@ -23,6 +23,13 @@
             android:padding="0dp"
             android:layout_gravity="start"
             android:gravity="start">
+            <androidx.appcompat.widget.SearchView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                app:queryHint="Search Authors"
+                app:iconifiedByDefault="false"
+                android:layout_gravity="start|center_vertical"
+                android:id="@+id/search_view"/>
         </androidx.appcompat.widget.Toolbar>
     </com.google.android.material.appbar.AppBarLayout>
 

@@ -4,7 +4,7 @@ import android.os.Bundle
 import android.view.View
 import android.widget.ProgressBar
 import androidx.appcompat.app.AppCompatActivity
-import androidx.appcompat.widget.Toolbar
+import androidx.appcompat.widget.SearchView
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -27,26 +27,15 @@ class AuthorsByLetterActivity : AppCompatActivity() {
         val linearLayout = LinearLayoutManager(this)
         recycler_view.layoutManager = linearLayout
 
-        val toolbar: Toolbar = findViewById<Toolbar>(R.id.toolbar)
-        setSupportActionBar(toolbar)
-        getSupportActionBar()?.setDisplayShowTitleEnabled(false)
-        getSupportActionBar()?.setHomeButtonEnabled(true)
-        getSupportActionBar()?.setDisplayHomeAsUpEnabled(true)
-
         startLoading()
 
         viewModel = ViewModelProvider(this).get(AuthorsViewModel::class.java)
 
         val letter = intent.extras?.getString("letter").orEmpty()
+        val searchView: SearchView = findViewById<SearchView>(R.id.search_view)
+        searchView.queryHint = "Authors starting with ${letter}"
+
         viewModel.authorsByLetter(letter).observe(this, Observer(this::onData))
-
-//        setSupportActionBar(findViewById(R.id.toolbar))
-
-//        binding.toolbarLayout.title = title
-//        binding.fab.setOnClickListener { view ->
-//            Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-//                .setAction("Action", null).show()
-//        }
     }
 
     private fun onData(list: List<Author>?) {

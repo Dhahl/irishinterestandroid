@@ -6,7 +6,6 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ProgressBar
-import androidx.appcompat.widget.Toolbar
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
@@ -30,8 +29,6 @@ class AuthorsAtoZListingFragment : Fragment() {
         recycler_view = view.findViewById<RecyclerView>(R.id.authors_recycler_view)
         val linearLayout = LinearLayoutManager(view.context)
         recycler_view.layoutManager = linearLayout
-
-        val toolbar: Toolbar = view.findViewById<Toolbar>(R.id.toolbar)
 
         startLoading()
 
